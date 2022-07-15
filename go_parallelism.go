@@ -28,6 +28,8 @@ func main() {
 
   go evenSum(0, 100, evenCh)
   go squareSum(0, 100, sqCh)
+  
+  fmt.Println(<-evenCh + <- sqCh)
   /*
   select {
   case x := <- evenCh:
@@ -35,5 +37,19 @@ func main() {
   case y := <- sqCh:
      fmt.Println(y)
   */
-  fmt.Println(<-evenCh + <- sqCh)
+  /*
+  for {
+    select {
+        case x := <- evenCh:
+            fmt.Println(x)
+            return
+        case y := <- sqCh:
+            fmt.Println(y)
+            return
+        default:
+            fmt.Println("Ничего не доступно")
+            time.Sleep(50 * time.Millisecond)
+    }
+} 
+*/
 }
