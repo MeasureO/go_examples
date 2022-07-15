@@ -28,6 +28,12 @@ func main() {
 
   go evenSum(0, 100, evenCh)
   go squareSum(0, 100, sqCh)
-
+  /*
+  select {
+  case x := <- evenCh:
+     fmt.Println(x)
+  case y := <- sqCh:
+     fmt.Println(y)
+  */
   fmt.Println(<-evenCh + <- sqCh)
 }
